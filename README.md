@@ -127,3 +127,9 @@ python main.py
   * 優化校準分頁，或許加入一些自動校準的選項。
 
 **注意：** 此方法目前僅適用於單一平面的環境。
+
+## Note
+* [traffic3d](https://traffic3d.org/)
+* [github/yuk068/traffic-collision-anticipation-model](https://yuk068.github.io/2025/05/31/traffic-collision-anticipation-model)
+* [codeocean/3D-Net: Monocular 3D Object Recognition for Traffic Monitoring](https://codeocean.com/capsule/7713588/tree/v2)
+* [Expert Systems with Applications/3D-Net: Monocular 3D object recognition for traffic monitoring](https://www.sciencedirect.com/science/article/pii/S0957417423007558?ref=pdf_download&fr=RR-2&rr=9c4f890b6abb0760)
