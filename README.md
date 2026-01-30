@@ -4,7 +4,7 @@ TrafficLab 將「易用性」放在首位。只需擁有 CCTV（監視器）的 
 
 **執行此程式前，先詳閱此 README。點擊[此處](#getting-started)跳轉至「入門指南」。**
 
-### 檔案結構
+## 檔案結構
 
 ```
 TrafficLab-3D/
@@ -41,8 +41,6 @@ TrafficLab-3D/
 
 ```
 
----
-
 ## 簡介
 
 TrafficLab 是一款端到端的交通分析套件，涵蓋以下功能：
@@ -52,8 +50,6 @@ TrafficLab 是一款端到端的交通分析套件，涵蓋以下功能：
 * **視覺化 (Visualization)：** 提供「數位分身」體驗，將 CCTV（具備 3D 邊界框）與衛星視圖（具備地面框、速度與方向）進行同步並排顯示。
 
 導航至程式左上角的任一分頁即可開始使用。
-
----
 
 ## 功能說明
 
@@ -105,8 +101,6 @@ TrafficLab 的功能主要分布在三個分頁中，您可以在這些分頁間
 
 這是輸出 JSON 檔案的視覺化引擎，具有工具列與鍵盤快捷鍵的完整控制，並提供 CCTV 與衛星視圖（SAT）面板的彈性並排顯示。
 
----
-
 ## 入門指南 (Getting Started)
 
 安裝必要的 conda/venv 環境，然後執行 `main.py`：
@@ -125,32 +119,18 @@ python main.py
 
 本專案靈感來自於論文 [Rezaei et al. 2023](https://www.sciencedirect.com/science/article/pii/S0957417423007558)
 
----
+## Origin Author Information
+> 發布版本：v1.0
 
-## 未來發展路線 (Roadmap)
-
-### 關於 TrafficLab
-
-發布版本：v1.0
-
-開發者：Yuk
-
-* [Yuk 的部落格](https://yuk068.github.io/)
-* [Github (個人/休閒)](https://github.com/yuk068)
-* [Github (工作)](https://github.com/duy-phamduc68)
-
-補充資源：
-
-* [YouTube 專案演示](https://www.youtube.com/watch?v=AYUXXnzenvk)
-
-在 **TrafficLab 3D v1.1** 中，目標：
-
-* 重寫程式碼庫，目前的程式碼相當凌亂，深感抱歉。
-* 針對更平滑、符合物理約束的運動學與追蹤進行更多研究。
-* 優化校準分頁，或許加入一些自動校準的選項。
+* 開發者：Yuk
+  * [Yuk 的部落格](https://yuk068.github.io/)
+  * [Github (個人/休閒)](https://github.com/yuk068)
+  * [Github (工作)](https://github.com/duy-phamduc68)
+* 補充資源：
+  * [YouTube 專案演示](https://www.youtube.com/watch?v=AYUXXnzenvk)
+* 在 **TrafficLab 3D v1.1** 中，目標：
+  * 重寫程式碼庫，目前的程式碼相當凌亂，深感抱歉。
+  * 針對更平滑、符合物理約束的運動學與追蹤進行更多研究。
+  * 優化校準分頁，或許加入一些自動校準的選項。
 
 **注意：** 此方法目前僅適用於單一平面的環境。
-
-### 長期願景
-
-希望將此概念擴展至全市規模，結合自動校準與持續進化的偵測器與追蹤器。最終使其足以支援高保真度的下游任務，如模擬、數位分身、自然語言查詢、強化學習等。
