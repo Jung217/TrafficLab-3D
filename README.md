@@ -111,15 +111,14 @@ python main.py
 
 ```
 
-在這個 [Google Drive](https://drive.google.com/drive/folders/14NVnbrUUfII3tRdI8OOEPnLzKbs3SPvn?usp=sharing) 中，您可以找到：
-
-* 放置於 `models/` 資料夾的微調後 `YOLOv8-s` 和 `YOLOv11-s` 模型。
-* 兩個已建構好投影的地點資料夾（一個含 SVG，一個不含）。如果您需要更多不同地點的投影資料，請與我聯繫。請將其放入 `location/` 資料夾。
-* 一個預處理好的 `.json.gz` 輸出檔案（需要配合雲端硬碟中的 `119NH` 資料夾）。
-
-本專案靈感來自於論文 [Rezaei et al. 2023](https://www.sciencedirect.com/science/article/pii/S0957417423007558)
+* 在這個 [Google Drive](https://drive.google.com/drive/folders/14NVnbrUUfII3tRdI8OOEPnLzKbs3SPvn?usp=sharing) 中，您可以找到：
+  * 放置於 `models/` 資料夾的微調後 `YOLOv8-s` 和 `YOLOv11-s` 模型。
+  * 兩個已建構好投影的地點資料夾（一個含 SVG，一個不含）。如果您需要更多不同地點的投影資料，請與我聯繫。請將其放入 `location/` 資料夾。
+  * 一個預處理好的 `.json.gz` 輸出檔案（需要配合雲端硬碟中的 `119NH` 資料夾）。
 
 ## Origin Author Information
+>本專案靈感來自於論文 [Rezaei et al. 2023](https://www.sciencedirect.com/science/article/pii/S0957417423007558)
+
 > 發布版本：v1.0
 
 * 開發者：Yuk
