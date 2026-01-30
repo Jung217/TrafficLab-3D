@@ -87,7 +87,7 @@ class WelcomeTab(QWidget):
             with open(md_path, "r", encoding="utf-8") as f:
                 viewer.setMarkdown(f.read())
         else:
-            viewer.setPlainText(f"Missing markdown:\n{md_path}")
+            viewer.setPlainText(f"Missing markdown:\n{md_path}\n(缺少 Markdown 文件)")
 
         content_layout.addWidget(viewer)
         root.addWidget(content_container)

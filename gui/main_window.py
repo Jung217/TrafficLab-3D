@@ -11,7 +11,7 @@ from .tabs.tab_location import LocationTab
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("TrafficLab 3D v1.0")
+        self.setWindowTitle("TrafficLab 3D v1.0 (交通實驗室 3D v1.0)")
 
         # Restore normal window decorations
         self.setWindowFlags(Qt.Window)
@@ -19,11 +19,11 @@ class MainWindow(QMainWindow):
         # Create tabs and set as central widget
         tabs = QTabWidget()
         
-        tabs.addTab(WelcomeTab(), "Welcome")
-        tabs.addTab(LocationTab(), "Location")
-        tabs.addTab(CalibrationTab(), "Calibration")
-        tabs.addTab(InferenceTab(), "Inference")
-        tabs.addTab(VisualizationTab(), "Visualization")
+        tabs.addTab(WelcomeTab(), "Welcome (歡迎)")
+        tabs.addTab(LocationTab(), "Location (地點)")
+        tabs.addTab(CalibrationTab(), "Calibration (校正)")
+        tabs.addTab(InferenceTab(), "Inference (推論)")
+        tabs.addTab(VisualizationTab(), "Visualization (視覺化)")
         self.setCentralWidget(tabs)
 
         # Overlay that appears when the window is NOT maximized
@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         # Use a solid background color (no transparency)
         self.overlay.setStyleSheet("background-color: #000000;")
         ol_layout = QVBoxLayout(self.overlay)
-        ol_label = QLabel("Window is not maximized. Click anywhere to maximize.")
+        ol_label = QLabel("Window is not maximized. Click anywhere to maximize.\n(視窗未最大化。點擊任意處以最大化。)")
         ol_label.setStyleSheet("color: white; font-size: 18px;")
         ol_label.setAlignment(Qt.AlignCenter)
         ol_layout.addWidget(ol_label)

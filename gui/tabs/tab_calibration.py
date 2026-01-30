@@ -44,7 +44,7 @@ class SaveStage(QWidget):
         layout.setSpacing(15)
         layout.setContentsMargins(20, 20, 20, 20)
         
-        title = QLabel("Save Configuration")
+        title = QLabel("Save Configuration (儲存配置)")
         title.setStyleSheet("font-weight: bold; font-size: 18px;")
         layout.addWidget(title)
         
@@ -53,13 +53,13 @@ class SaveStage(QWidget):
         self.lbl_path.setStyleSheet("font-size: 13px; color: #aaa;")
         layout.addWidget(self.lbl_path)
         
-        layout.addWidget(QLabel("Final JSON Preview:"))
+        layout.addWidget(QLabel("Final JSON Preview (最終 JSON 預覽):"))
         self.text_preview = QTextEdit()
         self.text_preview.setReadOnly(True)
         self.text_preview.setStyleSheet("font-family: Consolas, monospace; font-size: 12px;")
         layout.addWidget(self.text_preview)
         
-        self.btn_save = QPushButton("Save G_projection.json")
+        self.btn_save = QPushButton("Save G_projection.json (儲存 G_projection.json)")
         self.btn_save.setFixedHeight(50)
         self.btn_save.setStyleSheet("""
             QPushButton {
@@ -109,10 +109,10 @@ class SaveStage(QWidget):
             os.makedirs(os.path.dirname(self.save_path), exist_ok=True)
             self._save_config_func(self.save_path, host.inspect_obj)
             
-            self.lbl_status.setText("✅ Saved Successfully!")
+            self.lbl_status.setText("Saved Successfully! (儲存成功！)")
             self.lbl_status.setStyleSheet("color: #2ca02c; font-weight: bold; font-size: 14px;")
         except Exception as e:
-            self.lbl_status.setText("❌ Save Failed")
+            self.lbl_status.setText("Save Failed (儲存失敗)")
             self.lbl_status.setStyleSheet("color: #e74c3c; font-weight: bold; font-size: 14px;")
 
 class InspectDialog(QDialog):
@@ -137,20 +137,20 @@ class InspectDialog(QDialog):
 
 class CalibrationTab(QWidget):
     STEPS = [
-        ("Pick", "Pick"),
-        ("Intrinsics", "Lens"),
-        ("Undistort", "Undis"),
-        ("Validation 1", "Val1"),
-        ("Homography Anchors", "HomA"),
-        ("Homography FOV", "HomF"),
-        ("Validation 2", "Val2"),
-        ("Parallax Subjects", "ParS"),
-        ("Distance Reference", "Dist"),
-        ("Validation 3", "Val3"),
-        ("SVG", "SVG"),
+        ("Pick (選點)", "Pick"),
+        ("Intrinsics (鏡頭參數)", "Lens"),
+        ("Undistort (去畸變)", "Undis"),
+        ("Validation 1 (驗證1)", "Val1"),
+        ("Homography Anchors (單應性-錨點)", "HomA"),
+        ("Homography FOV (單應性-視場)", "HomF"),
+        ("Validation 2 (驗證2)", "Val2"),
+        ("Parallax Subjects (視差-主體)", "ParS"),
+        ("Distance Reference (距離參考)", "Dist"),
+        ("Validation 3 (驗證3)", "Val3"),
+        ("SVG (圖層)", "SVG"),
         ("ROI", "ROI"),
-        ("Final Validation", "Final"),
-        ("Save", "Save"),
+        ("Final Validation (最終驗證)", "Final"),
+        ("Save (儲存)", "Save"),
     ]
 
     def __init__(self):
@@ -203,7 +203,7 @@ class CalibrationTab(QWidget):
         left_v.addWidget(self.progress_container)
         top_layout.addWidget(left_area, 1)
 
-        inspect_btn = QPushButton("Inspect")
+        inspect_btn = QPushButton("Inspect (檢查)")
         inspect_btn.setFixedSize(100, 36)
         inspect_btn.clicked.connect(self._on_inspect)
         top_layout.addWidget(inspect_btn, 0, Qt.AlignRight | Qt.AlignVCenter)

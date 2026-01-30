@@ -22,12 +22,12 @@ class LocationTab(QWidget):
 
         layout = QVBoxLayout(self)
 
-        grp = QGroupBox("Create Location")
+        grp = QGroupBox("Create Location (建立地點)")
         g_l = QVBoxLayout()
 
         # Location code input
         h1 = QHBoxLayout()
-        h1.addWidget(QLabel("Location Code:"))
+        h1.addWidget(QLabel("Location Code (地點代碼):"))
         self.le_code = QLineEdit()
         self.le_code.setPlaceholderText("e.g. 119NH")
         h1.addWidget(self.le_code)
@@ -35,7 +35,7 @@ class LocationTab(QWidget):
 
         # CCTV picker
         h2 = QHBoxLayout()
-        self.btn_pick_cctv = QPushButton("Choose CCTV Image")
+        self.btn_pick_cctv = QPushButton("Choose CCTV Image (選擇 CCTV 影像)")
         self.btn_pick_cctv.clicked.connect(self.pick_cctv)
         h2.addWidget(self.btn_pick_cctv)
         self.lbl_cctv_info = QLabel("No CCTV selected")
@@ -44,7 +44,7 @@ class LocationTab(QWidget):
 
         # SAT picker
         h3 = QHBoxLayout()
-        self.btn_pick_sat = QPushButton("Choose SAT Image")
+        self.btn_pick_sat = QPushButton("Choose SAT Image (選擇衛星影像)")
         self.btn_pick_sat.clicked.connect(self.pick_sat)
         h3.addWidget(self.btn_pick_sat)
         self.lbl_sat_info = QLabel("No SAT selected")
@@ -53,7 +53,7 @@ class LocationTab(QWidget):
 
         # Layout SVG picker (optional)
         h4 = QHBoxLayout()
-        self.btn_pick_layout = QPushButton("Choose Layout SVG (optional)")
+        self.btn_pick_layout = QPushButton("Choose Layout SVG (選擇佈局 SVG [選填])")
         self.btn_pick_layout.clicked.connect(self.pick_layout)
         h4.addWidget(self.btn_pick_layout)
         self.lbl_layout_info = QLabel("No layout selected")
@@ -62,7 +62,7 @@ class LocationTab(QWidget):
 
         # ROI picker (optional)
         h5 = QHBoxLayout()
-        self.btn_pick_roi = QPushButton("Choose ROI Image (optional)")
+        self.btn_pick_roi = QPushButton("Choose ROI Image (選擇 ROI 影像 [選填])")
         self.btn_pick_roi.clicked.connect(self.pick_roi)
         h5.addWidget(self.btn_pick_roi)
         self.lbl_roi_info = QLabel("No ROI selected")
@@ -72,7 +72,7 @@ class LocationTab(QWidget):
         # Create button
         h4 = QHBoxLayout()
         h4.addStretch()
-        self.btn_create = QPushButton("Create location code")
+        self.btn_create = QPushButton("Create location code (建立地點代碼)")
         self.btn_create.clicked.connect(self.create_location)
         h4.addWidget(self.btn_create)
         g_l.addLayout(h4)
@@ -154,7 +154,7 @@ class LocationTab(QWidget):
                 factor = 1.25 if angle > 0 else 0.8
                 self.scale(factor, factor)
 
-        media_box = QGroupBox("Media Preview")
+        media_box = QGroupBox("Media Preview (媒體預覽)")
         m_layout = QHBoxLayout(media_box)
         m_layout.setContentsMargins(6, 6, 6, 6)
 
@@ -163,7 +163,7 @@ class LocationTab(QWidget):
         self.media_cctv.setMinimumSize(320, 500)
         left_vbox = QVBoxLayout()
         left_vbox.addWidget(self.media_cctv)
-        self.media_cctv_fit = QPushButton("Fit CCTV")
+        self.media_cctv_fit = QPushButton("Fit CCTV (適應 CCTV)")
         self.media_cctv_fit.clicked.connect(lambda: self.media_cctv.fit_view())
         left_vbox.addWidget(self.media_cctv_fit)
         left_widget = QWidget(); left_widget.setLayout(left_vbox)
@@ -173,7 +173,7 @@ class LocationTab(QWidget):
         self.media_sat.setMinimumSize(320, 500)
         right_vbox = QVBoxLayout()
         right_vbox.addWidget(self.media_sat)
-        self.media_sat_fit = QPushButton("Fit SAT")
+        self.media_sat_fit = QPushButton("Fit SAT (適應衛星)")
         self.media_sat_fit.clicked.connect(lambda: self.media_sat.fit_view())
         right_vbox.addWidget(self.media_sat_fit)
         right_widget = QWidget(); right_widget.setLayout(right_vbox)
@@ -182,20 +182,20 @@ class LocationTab(QWidget):
         m_layout.addWidget(right_widget)
         layout.addWidget(media_box)
         # --- Import Footage section ---
-        imp_grp = QGroupBox("Import Footage into existing location")
+        imp_grp = QGroupBox("Import Footage into existing location (匯入影片至現有地點)")
         imp_l = QVBoxLayout()
 
         row_loc = QHBoxLayout()
-        row_loc.addWidget(QLabel("Location:"))
+        row_loc.addWidget(QLabel("Location (地點):"))
         self.combo_locations = QComboBox()
         row_loc.addWidget(self.combo_locations)
-        self.btn_refresh_locations = QPushButton("Refresh")
+        self.btn_refresh_locations = QPushButton("Refresh (重新整理)")
         self.btn_refresh_locations.clicked.connect(self._populate_location_combo)
         row_loc.addWidget(self.btn_refresh_locations)
         imp_l.addLayout(row_loc)
 
         row_imp = QHBoxLayout()
-        self.btn_add_footage = QPushButton("Add footage (mp4)")
+        self.btn_add_footage = QPushButton("Add footage (mp4) (新增影片)")
         self.btn_add_footage.clicked.connect(self.add_footage)
         row_imp.addWidget(self.btn_add_footage)
         row_imp.addStretch()

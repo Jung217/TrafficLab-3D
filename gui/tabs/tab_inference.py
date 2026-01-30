@@ -38,23 +38,23 @@ class InferenceTab(QWidget):
         layout = QVBoxLayout(self)
         
         # --- TOP: Configuration Area ---
-        config_group = QGroupBox("Configuration & Plan")
+        config_group = QGroupBox("Configuration & Plan (配置與計畫)")
         cg_layout = QVBoxLayout()
         
         # Config Selector Row
         row1 = QHBoxLayout()
         self.lbl_config = QLabel(f"Config: {self.config_path}")
-        btn_reload = QPushButton("Reload Config")
+        btn_reload = QPushButton("Reload Config (重載配置)")
         btn_reload.clicked.connect(self._load_defaults)
         # Config picker for multi-config YAML
         self.cfg_picker = QComboBox()
         self.cfg_picker.setVisible(False)
         self.cfg_picker.currentIndexChanged.connect(self._on_config_selected)
 
-        btn_edit = QPushButton("Edit Config")
+        btn_edit = QPushButton("Edit Config (編輯配置)")
         btn_edit.clicked.connect(self._toggle_editor)
 
-        btn_edit_meas = QPushButton("Edit Measurements")
+        btn_edit_meas = QPushButton("Edit Measurements (編輯測量)")
         btn_edit_meas.clicked.connect(self._toggle_measurements_editor)
 
         row1.addWidget(self.lbl_config)
@@ -73,18 +73,18 @@ class InferenceTab(QWidget):
         
         # Actions Row
         row2 = QHBoxLayout()
-        self.btn_lock = QPushButton("Scan")
+        self.btn_lock = QPushButton("Scan (掃描)")
         self.btn_lock.clicked.connect(self.on_lock_clicked)
         self.btn_lock.setStyleSheet("background-color: #2c3e50; color: white; font-weight: bold; padding: 5px;")
         
-        self.btn_wipe = QPushButton("Wipe Output")
+        self.btn_wipe = QPushButton("Wipe Output (清除輸出)")
         self.btn_wipe.clicked.connect(self.on_wipe_clicked)
         self.btn_wipe.setStyleSheet("background-color: #7f2c2c; color: white;")
         
         # Select / Unselect controls for Run column
-        self.btn_select_all = QPushButton("Select all")
+        self.btn_select_all = QPushButton("Select all (全選)")
         self.btn_select_all.clicked.connect(self.on_select_all_clicked)
-        self.btn_unselect_all = QPushButton("Unselect all")
+        self.btn_unselect_all = QPushButton("Unselect all (全不選)")
         self.btn_unselect_all.clicked.connect(self.on_unselect_all_clicked)
 
         row2.addWidget(self.btn_lock)
@@ -100,7 +100,7 @@ class InferenceTab(QWidget):
         self.table = QTableWidget()
         # CHANGED: 4 Columns now (Checkbox, Location, Footage, Status)
         self.table.setColumnCount(4)
-        self.table.setHorizontalHeaderLabels(["Run", "Location", "Footage", "Status"])
+        self.table.setHorizontalHeaderLabels(["Run (執行)", "Location (地點)", "Footage (影片)", "Status (狀態)"])
         
         # Formatting: Checkbox column small fixed width
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.Fixed)
@@ -112,17 +112,17 @@ class InferenceTab(QWidget):
         self.table.verticalHeader().setVisible(False)
         
         # --- BOTTOM: Execution & Logs ---
-        exec_group = QGroupBox("Execution")
+        exec_group = QGroupBox("Execution (執行)")
         ex_layout = QVBoxLayout()
         
         # Buttons
         btn_row = QHBoxLayout()
-        self.btn_start = QPushButton("Start Inference")
+        self.btn_start = QPushButton("Start Inference (開始推論)")
         self.btn_start.clicked.connect(self.on_start_clicked)
         self.btn_start.setEnabled(False)  # Disabled until locked
         self.btn_start.setStyleSheet("background-color: #27ae60; color: white; font-weight: bold; font-size: 14px; padding: 8px;")
         
-        self.btn_stop = QPushButton("Stop")
+        self.btn_stop = QPushButton("Stop (停止)")
         self.btn_stop.clicked.connect(self.on_stop_clicked)
         self.btn_stop.setEnabled(False)
         self.btn_stop.setStyleSheet("background-color: #c0392b; color: white; font-weight: bold; font-size: 14px; padding: 8px;")

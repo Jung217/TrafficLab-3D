@@ -291,7 +291,7 @@ class VisualizationTab(QWidget):
         sidebar_layout = QVBoxLayout(sidebar)
         
         # File Selection
-        file_group = QGroupBox("Select File")
+        file_group = QGroupBox("Select File (選擇檔案)")
         file_layout = QVBoxLayout()
         self.file_combo = QComboBox()
         # Ensure the slot is invoked without receiving the index argument
@@ -301,13 +301,13 @@ class VisualizationTab(QWidget):
         # Buttons row: Load (left) and Refresh (right) with outline
         btn_row = QHBoxLayout()
         self.btn_load_selected = QToolButton()
-        self.btn_load_selected.setText("Load")
+        self.btn_load_selected.setText("Load (載入)")
         self.btn_load_selected.clicked.connect(self.load_selected_file)
         self.btn_load_selected.setStyleSheet("QToolButton { border: 1px solid #888; border-radius:4px; padding:4px; }")
         btn_row.addWidget(self.btn_load_selected)
         # Add List Files button inline so all three are on the same row
         self.btn_list_files = QToolButton()
-        self.btn_list_files.setText("List Files")
+        self.btn_list_files.setText("List Files (列出檔案)")
         self.btn_list_files.clicked.connect(lambda: self.show_file_list_dialog())
         self.btn_list_files.setStyleSheet("QToolButton { border: 1px solid #888; border-radius:4px; padding:4px; }")
         btn_row.addWidget(self.btn_list_files)
@@ -326,9 +326,9 @@ class VisualizationTab(QWidget):
         sidebar_layout.addWidget(file_group)
 
         # SVG Layers
-        layer_group = QGroupBox("Map & SVG Layers")
+        layer_group = QGroupBox("Map & SVG Layers (地圖與 SVG 圖層)")
         layer_layout = QVBoxLayout()
-        layer_layout.addWidget(QLabel("Map/SVG Blend:"))
+        layer_layout.addWidget(QLabel("Map/SVG Blend (地圖/SVG 混合):"))
         self.slider_opacity = QSlider(Qt.Horizontal)
         self.slider_opacity.setRange(0, 100)
         self.slider_opacity.setValue(self.sat_opacity)
@@ -342,8 +342,8 @@ class VisualizationTab(QWidget):
             'Aesthetic': True,
             'Background': True
         }
-        for name in ['Physical', 'Guidelines', 'Aesthetic', 'Background']:
-            chk = QCheckBox(name)
+        for name, label_text in [('Physical', 'Physical (實體)'), ('Guidelines', 'Guidelines (參考線)'), ('Aesthetic', 'Aesthetic (美觀)'), ('Background', 'Background (背景)')]:
+            chk = QCheckBox(label_text)
             chk.setChecked(layer_defaults.get(name, True))
             chk.toggled.connect(lambda c, n=name: self.toggle_svg_layer(n, c))
             layer_layout.addWidget(chk)
@@ -352,17 +352,17 @@ class VisualizationTab(QWidget):
         sidebar_layout.addWidget(layer_group)
 
         # SAT Visuals
-        sat_vis_group = QGroupBox("SAT Visualization")
+        sat_vis_group = QGroupBox("SAT Visualization (衛星視覺化)")
         sat_vis_layout = QVBoxLayout()
-        self.chk_sat_box = QCheckBox("Floor Box"); self.chk_sat_box.setChecked(True)
+        self.chk_sat_box = QCheckBox("Floor Box (地板框)"); self.chk_sat_box.setChecked(True)
         self.chk_sat_box.toggled.connect(self.update_ui_state)
         # --- NEW: Coords Dot Checkbox ---
-        self.chk_sat_coords = QCheckBox("Show Coords Dot")
+        self.chk_sat_coords = QCheckBox("Show Coords Dot (顯示座標點)")
         self.chk_sat_coords.setChecked(False)
         self.chk_sat_coords.toggled.connect(self.update_ui_state)
-        self.chk_sat_arrow = QCheckBox("Heading Arrow"); self.chk_sat_arrow.setChecked(False)
+        self.chk_sat_arrow = QCheckBox("Heading Arrow (方向箭頭)"); self.chk_sat_arrow.setChecked(False)
         self.chk_sat_arrow.toggled.connect(self.update_ui_state)
-        self.chk_sat_label = QCheckBox("Text Label"); self.chk_sat_label.setChecked(self.show_sat_label)
+        self.chk_sat_label = QCheckBox("Text Label (文字標籤)"); self.chk_sat_label.setChecked(self.show_sat_label)
         self.chk_sat_label.toggled.connect(self.update_ui_state)
         # Add widgets to layout
         sat_vis_layout.addWidget(self.chk_sat_box)
@@ -371,7 +371,7 @@ class VisualizationTab(QWidget):
         sat_vis_layout.addWidget(self.chk_sat_label)
         
         th_lay = QHBoxLayout()
-        th_lay.addWidget(QLabel("Box Thick:"))
+        th_lay.addWidget(QLabel("Box Thick (框粗細):"))
         self.slider_sat_thick = QSlider(Qt.Horizontal); self.slider_sat_thick.setRange(1, 10); self.slider_sat_thick.setValue(2)
         self.slider_sat_thick.valueChanged.connect(self.update_ui_state)
         th_lay.addWidget(self.slider_sat_thick)
@@ -393,14 +393,14 @@ class VisualizationTab(QWidget):
         sat_vis_layout.addLayout(col_lay)
 
         fov_row = QHBoxLayout()
-        self.chk_fov = QCheckBox("Show FOV Polygon")
+        self.chk_fov = QCheckBox("Show FOV Polygon (顯示 FOV 多邊形)")
         self.chk_fov.setChecked(self.show_fov)
         fov_row.addWidget(self.chk_fov)
         self.chk_fov.toggled.connect(lambda v: self.set_fov_visible(bool(v)))
         sat_vis_layout.addLayout(fov_row)
 
         fov_alpha_row = QHBoxLayout()
-        fov_alpha_row.addWidget(QLabel("FOV Fill %:"))
+        fov_alpha_row.addWidget(QLabel("FOV Fill % (FOV 填充 %):"))
         self.slider_fov_opacity = QSlider(Qt.Horizontal)
         self.slider_fov_opacity.setRange(0, 100)
         self.slider_fov_opacity.setValue(self.fov_fill_opacity)
@@ -409,7 +409,7 @@ class VisualizationTab(QWidget):
         sat_vis_layout.addLayout(fov_alpha_row)
 
         spd_lay = QHBoxLayout()
-        spd_lay.addWidget(QLabel("Speed Delay:"))
+        spd_lay.addWidget(QLabel("Speed Delay (速度延遲):"))
         self.slider_speed_delay = QSlider(Qt.Horizontal); self.slider_speed_delay.setRange(0, 60); self.slider_speed_delay.setValue(10)
         self.slider_speed_delay.valueChanged.connect(self.update_ui_state)
         spd_lay.addWidget(self.slider_speed_delay)
@@ -419,41 +419,41 @@ class VisualizationTab(QWidget):
         sidebar_layout.addWidget(sat_vis_group)
         
         # CCTV Controls
-        cctv_group = QGroupBox("CCTV Controls")
+        cctv_group = QGroupBox("CCTV Controls (CCTV 控制)")
         cctv_layout = QVBoxLayout()
         
-        self.chk_tracking = QCheckBox("Color by ID"); self.chk_tracking.setChecked(True)
+        self.chk_tracking = QCheckBox("Color by ID (依 ID 著色)"); self.chk_tracking.setChecked(True)
         self.chk_tracking.toggled.connect(self.update_ui_state)
         cctv_layout.addWidget(self.chk_tracking)
         
         # --- 3D Controls ---
-        self.chk_3d_box = QCheckBox("Show 3D Box (Hide Text)")
+        self.chk_3d_box = QCheckBox("Show 3D Box (Hide Text) (顯示 3D 框 [隱藏文字])")
         self.chk_3d_box.setChecked(False); self.chk_3d_box.setEnabled(False) 
         self.chk_3d_box.toggled.connect(self.update_ui_state)
         cctv_layout.addWidget(self.chk_3d_box)
         
-        al_lay = QHBoxLayout(); al_lay.addWidget(QLabel("3D Face Opacity:"))
+        al_lay = QHBoxLayout(); al_lay.addWidget(QLabel("3D Face Opacity (3D 面透明度):"))
         self.slider_3d_alpha = QSlider(Qt.Horizontal); self.slider_3d_alpha.setRange(0, 255); self.slider_3d_alpha.setValue(50)
         self.slider_3d_alpha.valueChanged.connect(self.update_ui_state)
         al_lay.addWidget(self.slider_3d_alpha); cctv_layout.addLayout(al_lay)
 
-        self.chk_cctv_label = QCheckBox("Show Text (2D Mode)")
+        self.chk_cctv_label = QCheckBox("Show Text (2D Mode) (顯示文字 [2D 模式])")
         self.chk_cctv_label.setChecked(True)
         self.chk_cctv_label.toggled.connect(self.update_ui_state)
         cctv_layout.addWidget(self.chk_cctv_label)
 
-        self.chk_roi = QCheckBox("Show ROI (Red = Outside)")
+        self.chk_roi = QCheckBox("Show ROI (Red = Outside) (顯示 ROI [紅=外])")
         self.chk_roi.setChecked(self.show_roi)
         self.chk_roi.toggled.connect(self.update_ui_state)
         cctv_layout.addWidget(self.chk_roi)
 
         self.slider_fps = QSlider(Qt.Horizontal); self.slider_fps.setRange(1, 300); self.slider_fps.setValue(40)
         self.slider_fps.valueChanged.connect(self.update_fps_target)
-        cctv_layout.addWidget(QLabel("Target FPS:"))
+        cctv_layout.addWidget(QLabel("Target FPS (目標 FPS):"))
         cctv_layout.addWidget(self.slider_fps)
         
         jump_lay = QHBoxLayout()
-        jump_lay.addWidget(QLabel("Jump Frames:"))
+        jump_lay.addWidget(QLabel("Jump Frames (跳轉幀數):"))
         self.spin_jump_frames = QSpinBox()
         self.spin_jump_frames.setRange(1, 10000)
         self.spin_jump_frames.setValue(60)
